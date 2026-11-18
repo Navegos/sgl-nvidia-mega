@@ -92,7 +92,7 @@ class TestKimiK3Contract(unittest.TestCase):
         registry_patch.start()
         self.addCleanup(registry_patch.stop)
 
-    def test_spec_is_exact_api2_tp8_sm103_surface(self):
+    def test_spec_is_exact_api2_tp8_sm100_sm103_surface(self):
         from sgl_nvidia_mega.kimi_k3.spec import (
             REQUIRED_MEGAKERNEL_API_VERSION,
             SPEC,
@@ -101,7 +101,7 @@ class TestKimiK3Contract(unittest.TestCase):
         self.assertEqual(REQUIRED_MEGAKERNEL_API_VERSION, 2)
         self.assertEqual(SPEC.api_version, 2)
         self.assertEqual(MEGAKERNEL_API_VERSION, 2)
-        self.assertEqual(SPEC.requires.isas, frozenset({"sm_103"}))
+        self.assertEqual(SPEC.requires.isas, frozenset({"sm_100", "sm_103"}))
         self.assertEqual(SPEC.requires.tp_sizes, frozenset({8}))
         self.assertEqual(SPEC.requires.resident_blocks, 152)
         self.assertEqual(SPEC.requires.dtypes, frozenset({"bfloat16"}))
